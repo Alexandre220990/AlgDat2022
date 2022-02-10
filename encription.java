@@ -27,6 +27,31 @@ public class encription {
                 textWithXs.append('X');
             }
         }
-        return sb.toString().toUpperCase();
+        return "";
+    }
+
+    public static String encryptCaesarCipher(String plaintext, int offset){
+
+        StringBuilder sb = new StringBuilder();
+
+        final int MAX_OFFSET=25;
+        int originalAlphabetPosition = 0;
+
+        if(offset > MAX_OFFSET)
+            offset %= (MAX_OFFSET + 1);
+         //note >= (if equals 26 what happens?)
+
+        String ciphertext = "";
+
+        for (int i=0; i < plaintext.length()-1;i++)
+
+        if(plaintext.charAt(i) != ' '){
+            originalAlphabetPosition = plaintext.charAt(i) - 'a';
+        int newAlphabetPosition = (originalAlphabetPosition + offset) % 26;
+        char ch = (char) ('a' + newAlphabetPosition);
+            sb.append(ch);
+        }
+
+        return sb.toString();
     }
 }
